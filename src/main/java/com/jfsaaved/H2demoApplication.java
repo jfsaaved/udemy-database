@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.jfsaaved.domain.Post;
 import com.jfsaaved.repository.PostRepository;
+import com.jfsaaved.service.DataLoader;
 
 @SpringBootApplication
 public class H2demoApplication {
@@ -19,6 +20,9 @@ public class H2demoApplication {
 	// PostRepository
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	DataLoader dataLoader;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(H2demoApplication.class, args);
