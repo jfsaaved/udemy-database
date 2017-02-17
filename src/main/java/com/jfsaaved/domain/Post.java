@@ -19,7 +19,11 @@ public class Post {
 	
 	@Column(columnDefinition = "TEXT")
 	private String body;
-	private Date postedOn;
+	
+	@Column(columnDefinition = "TEXT")
+	private String teaser;
+	
+	private String slug;
 	
 	// Many posts to one author
 	@ManyToOne
@@ -50,14 +54,6 @@ public class Post {
 		this.title = title;
 	}
 
-	public Date getPostedOn() {
-		return postedOn;
-	}
-
-	public void setPostedOn(Date postedOn) {
-		this.postedOn = postedOn;
-	}
-
 	public String getBody() {
 		return body;
 	}
@@ -68,6 +64,22 @@ public class Post {
 	
 	public void setAuthor(Author author) {
 		this.author = author;
+	}
+
+	public String getTeaser() {
+		return teaser;
+	}
+
+	public void setTeaser(String teaser) {
+		this.teaser = teaser;
+	}
+
+	public String getSlug() {
+		return slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
 	}
 	
 	
