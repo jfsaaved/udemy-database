@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.data.annotation.CreatedDate;
+
 @Entity
 public class Post {
 
@@ -25,10 +27,14 @@ public class Post {
 	
 	private String slug;
 	
+	@CreatedDate @Column( columnDefinition = "TIMESTAMP" )
+	private Date postedOn;
+	
 	// Many posts to one author
 	@ManyToOne
 	private Author author;
 	
+	@SuppressWarnings("unused")
 	// Needed by JPA
 	private Post() {
 		
@@ -80,6 +86,14 @@ public class Post {
 
 	public void setSlug(String slug) {
 		this.slug = slug;
+	}
+
+	public Date getPostedOn() {
+		return postedOn;
+	}
+
+	public void setPostedOn(Date postedOn) {
+		this.postedOn = postedOn;
 	}
 	
 	

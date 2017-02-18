@@ -15,26 +15,8 @@ import com.jfsaaved.service.DataLoader;
 @SpringBootApplication
 public class H2demoApplication {
 	
-	private static final Logger logger = LoggerFactory.getLogger(H2demoApplication.class);
-
-	// PostRepository
-	@Autowired
-	private PostRepository postRepository;
-	
-	@Autowired
-	DataLoader dataLoader;
-	
 	public static void main(String[] args) {
 		SpringApplication.run(H2demoApplication.class, args);
-	}
-	
-	// PostConstruct
-	@PostConstruct
-	private void seePosts() {
-		logger.info("seePosts method called. . .");
-		for(Post post : postRepository.findAll()) {
-			logger.info(post.toString());
-		}
 	}
 	
 }
