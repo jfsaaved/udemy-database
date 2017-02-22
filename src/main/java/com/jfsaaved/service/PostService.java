@@ -23,7 +23,11 @@ public class PostService {
 	}
 
 	public List<Post> list(){
-		return null;
+		return postRepository.findAllByOrderByPostedOnDesc();
+	}
+	
+	public Post getBySlug(String slug) {
+		return postRepository.findBySlug(slug);
 	}
 	
 }

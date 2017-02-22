@@ -13,28 +13,35 @@ public class Author {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
 	private String firstName;
 	private String lastName;
+	private String email;
 	
+	//posts
 	@OneToMany( mappedBy = "author" )
 	private List<Post> posts;
 	
-	private Author() {
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	private Author(){
 		
 	}
 	
-	public Author(String firstName, String lastName) {
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
+	public Author(String first, String last){
+		this.setFirstName(first);
+		this.setLastName(last);
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	
+	public Author(String first, String last, String email){
+		this.setFirstName(first);
+		this.setLastName(last);
+		this.email = email;
 	}
 
 	public String getFirstName() {
@@ -51,6 +58,19 @@ public class Author {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Author [firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 }

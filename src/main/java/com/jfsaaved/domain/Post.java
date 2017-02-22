@@ -13,10 +13,8 @@ import org.springframework.data.annotation.CreatedDate;
 @Entity
 public class Post {
 
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private Long id;
-	
 	private String title;
 	
 	@Column(columnDefinition = "TEXT")
@@ -27,29 +25,18 @@ public class Post {
 	
 	private String slug;
 	
-	@CreatedDate @Column( columnDefinition = "TIMESTAMP" )
+	@CreatedDate 
 	private Date postedOn;
-	
-	// Many posts to one author
+
 	@ManyToOne
 	private Author author;
 	
 	@SuppressWarnings("unused")
-	// Needed by JPA
-	private Post() {
-		
+	private Post(){
 	}
 	
-	public Post(String title) {
+	public Post(String title){
 		this.setTitle(title);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
@@ -67,11 +54,23 @@ public class Post {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	
+
+	public Date getPostedOn() {
+		return postedOn;
+	}
+
+	public void setPostedOn(Date postedOn) {
+		this.postedOn = postedOn;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
 	public void setAuthor(Author author) {
 		this.author = author;
 	}
-
+	
 	public String getTeaser() {
 		return teaser;
 	}
@@ -88,12 +87,9 @@ public class Post {
 		this.slug = slug;
 	}
 
-	public Date getPostedOn() {
-		return postedOn;
-	}
-
-	public void setPostedOn(Date postedOn) {
-		this.postedOn = postedOn;
+	@Override
+	public String toString() {
+		return "Post [title=" + title + "]";
 	}
 	
 	
